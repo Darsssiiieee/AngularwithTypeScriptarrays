@@ -1,1 +1,63 @@
-<p>composer-list works!</p>
+<main>
+	<h1>Composer List</h1>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+            placeholder="Enter Name"
+			[(ngModel)]="name" />
+	</div>
+
+	<div>
+		<label for="popularMusic">Popular Music:</label>
+		<input
+			type="text"
+			id="popularMusic"
+            placeholder="Enter Popular Music"
+			[(ngModel)]="popularMusic" />
+	</div>
+
+	<div>
+		<label for="genre">Genre:</label>
+		<input
+			type="text"
+			id="genre"
+            placeholder="Enter Genre"
+			[(ngModel)]="genre" />
+	</div>
+
+	<div>
+		<label for="country">Country:</label>
+		<input
+			type="text"
+			id="country"
+            placeholder="Enter Country"
+			[(ngModel)]="country" />
+	</div>
+    <br>
+	<div>
+		<button (click)="addComposer()">Add Composer</button>
+	</div>
+    <br>
+    <br>
+	<h3>Composer Information List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Popular Music</th>
+				<th>Genre</th>
+				<th>Country</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let composer of composers">
+				<td>{{ composer.name }}</td>
+				<td>{{ composer.popularMusic }}</td>
+				<td>{{ composer.genre }}</td>
+				<td>{{ composer.country }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
