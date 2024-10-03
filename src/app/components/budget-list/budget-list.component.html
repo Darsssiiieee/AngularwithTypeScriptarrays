@@ -1,1 +1,70 @@
-<p>budget-list works!</p>
+<main>
+	<h1>Budget List</h1>
+	<div>
+		<label for="project">Project Name:</label>
+		<input
+			type="text"
+			id="project"
+			name="project"
+            placeholder="Enter Project Name"
+			[(ngModel)]="project" />
+	</div>
+	<div>
+		<label for="budget">Budget:</label>
+		<input
+			type="number"
+			id="budget"
+			name="budget"
+			[(ngModel)]="budget" />
+	</div>
+	<div>
+		<label for="status">Status:</label>
+		<input
+			type="text"
+			id="status"
+			name="status"
+            placeholder="Enter Project"
+			[(ngModel)]="status" />
+	</div>
+	<div>
+		<label for="startDate">Start Date:</label>
+		<input
+			type="date"
+			id="startDate"
+			name="startDate"
+			[(ngModel)]="startDate" />
+	</div>
+	<div>
+		<label for="endDate">End Date:</label>
+		<input
+			type="date"
+			id="endDate"
+			name="endDate"
+			[(ngModel)]="endDate" />
+	</div>
+    <br> 
+	<button (click)="addBudget()">Add Budget</button>
+    <br> 
+    <br> 
+    <h3>Budget Information List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Project Name</th>
+				<th>Budget</th>
+				<th>Status</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let budget of budgets">
+				<td>{{ budget.project }}</td>
+				<td>{{ budget.budget }}</td>
+				<td>{{ budget.status }}</td>
+				<td>{{ budget.startDate }}</td>
+				<td>{{ budget.endDate }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
