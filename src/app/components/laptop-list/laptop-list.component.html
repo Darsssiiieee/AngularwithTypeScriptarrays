@@ -1,1 +1,115 @@
-<p>laptop-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center">Laptop List</h1>
+			</div>
+		</div>
+
+		<div>
+			<label for="id">ID:</label>
+			<input
+				type="text"
+				id="id"
+				[(ngModel)]="id" />
+		</div>
+		<div>
+			<label for="model">Model:</label>
+			<input
+				type="text"
+				id="model"
+                placeholder="Enter Model"
+				[(ngModel)]="model" />
+		</div>
+		<div>
+			<label for="brand">Brand:</label>
+			<input
+				type="text"
+				id="brand"
+                placeholder="Enter Brand"
+				[(ngModel)]="brand" />
+		</div>
+		<div>
+			<label for="price">Price:</label>
+			<input
+				type="text"
+				id="price"
+				[(ngModel)]="price" />
+		</div>
+		<div>
+			<label for="processor">Processor:</label>
+			<input
+				type="text"
+				id="processor"
+                placeholder="Enter Processor"
+				[(ngModel)]="processor" />
+		</div>
+		<div>
+			<label for="ram">RAM:</label>
+			<input
+				type="text"
+				id="ram"
+                placeholder="Enter RAM"
+				[(ngModel)]="ram" />
+		</div>
+		<div>
+			<label for="storage">Storage:</label>
+			<input
+				type="text"
+				id="storage"
+                placeholder="Enter Storage"
+				[(ngModel)]="storage" />
+		</div>
+		<div>
+			<label for="display">Display:</label>
+			<input
+				type="text"
+				id="display"
+                placeholder="Enter Display"
+				[(ngModel)]="display" />
+		</div>
+		<div>
+			<label for="graphics">Graphics:</label>
+			<input
+				type="text"
+				id="graphics"
+                placeholder="Enter Graphics"
+				[(ngModel)]="graphics" />
+		</div>
+        <br>
+		<div>
+			<button (click)="addLaptop()">Add Laptop</button>
+		</div>
+        <br>
+        <br>
+        <h3>Laptop Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Processor</th>
+                    <th>RAM</th>
+                    <th>Storage</th>
+                    <th>Display</th>
+                    <th>Graphics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let laptop of laptops">
+                    <td>{{ laptop.id}}</td>
+                    <td>{{ laptop.model }}</td>
+                    <td>{{ laptop.brand }}</td>
+                    <td>{{ laptop.price }}</td>
+                    <td>{{ laptop.processor }}</td>
+                    <td>{{ laptop.ram }}</td>
+                    <td>{{ laptop.storage }}</td>
+                    <td>{{ laptop.display }}</td>
+                    <td>{{ laptop.graphics }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
