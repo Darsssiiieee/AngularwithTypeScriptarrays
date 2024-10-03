@@ -1,1 +1,73 @@
-<p>framework-list works!</p>
+<main>
+	<h1>Framework List</h1>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			name="name"
+            placeholder="Enter Name"
+			[(ngModel)]="name" />
+	</div>
+	<div>
+		<label for="description">Description:</label>
+		<input
+			type="text"
+			id="description"
+			name="description"
+            placeholder="Enter Description"
+			[(ngModel)]="description" />
+	</div>
+	<div>
+		<label for="developedBy">Developed By:</label>
+		<input
+			type="text"
+			id="developedBy"
+			name="developedBy"
+            placeholder="Enter Developed By"
+			[(ngModel)]="developedBy" />
+	</div>
+	<div>
+		<label for="firstRelease">First Release:</label>
+		<input
+			type="text"
+			id="firstRelease"
+			name="firstRelease"
+            placeholder="Enter First Release"
+			[(ngModel)]="firstRelease" />
+	</div>
+	<div>
+		<label for="latestRelease">Latest Release:</label>
+		<input
+			type="text"
+			id="latestRelease"
+			name="latestRelease"
+            placeholder="Enter Latest Release"
+			[(ngModel)]="latestRelease" />
+	</div>
+    <br>
+	<button (click)="addFramework()">Add Framework</button>
+    <br>
+    <br>
+	<h3>Framework Information List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Developed By</th>
+				<th>First Release</th>
+				<th>Latest Release</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let framework of frameworks">
+				<td>{{ framework.name }}</td>
+				<td>{{ framework.description }}</td>
+				<td>{{ framework.developedBy }}</td>
+				<td>{{ framework.firstRelease }}</td>
+				<td>{{ framework.latestRelease }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
