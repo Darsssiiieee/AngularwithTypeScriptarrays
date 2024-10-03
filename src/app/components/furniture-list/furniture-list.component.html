@@ -1,1 +1,82 @@
-<p>furniture-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Furniture List</h1>
+			</div>
+		</div>
+
+		<div>
+			<label for="name">Name:</label>
+			<input
+				type="text"
+				id="name"
+				name="name"
+                placeholder="Enter Name"
+				[(ngModel)]="name" />
+		</div>
+		<div>
+			<label for="description">Description:</label>
+			<input
+				type="text"
+				id="description"
+				name="description"
+                placeholder="Enter Description"
+				[(ngModel)]="description" />
+		</div>
+		<div>
+			<label for="type">Type:</label>
+			<input
+				type="text"
+				id="type"
+				name="type"
+                placeholder="Enter Type"
+				[(ngModel)]="type" />
+		</div>
+		<div>
+			<label for="price">Price:</label>
+			<input
+				type="number"
+				id="price"
+				name="price"
+                placeholder="Enter Price"
+				[(ngModel)]="price" />
+		</div>
+		<div>
+			<label for="category">Category:</label>
+			<input
+				type="text"
+				id="category"
+				name="category"
+                placeholder="Enter Category"
+				[(ngModel)]="category" />
+		</div>
+        <br>
+		<div>
+			<button (click)="addFurniture()">Add Furniture</button>
+		</div>
+        <br>
+        <br>
+        <h3>Furniture Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let furniture of furnitureList">
+                    <td>{{ furniture.name }}</td>
+                    <td>{{ furniture.description }}</td>
+                    <td>{{ furniture.type }}</td>
+                    <td>{{ furniture.price }}</td>
+                    <td>{{ furniture.category }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
