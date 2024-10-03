@@ -53,7 +53,7 @@ import { LibraryListComponent } from './components/library-list/library-list.com
 
 const routes: Routes = [
   {path: 'student-list', component: StudentListComponent},
-  {path: 'employee;list', component:  EmployeeListComponent},
+  {path: 'employee-list', component:  EmployeeListComponent},
   {path: 'fruit-list', component: FruitListComponent},
   {path: 'course-list', component:  CourseListComponent},
   {path: 'book-list', component: BookListComponent},
