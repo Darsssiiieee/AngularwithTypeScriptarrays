@@ -1,1 +1,73 @@
-<p>language-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Language List</h1>
+			</div>
+		</div>
+		<div>
+			<label for="id">ID:</label>
+			<input
+				id="id"
+				type="number"
+				class="form-control"
+				[(ngModel)]="id" />
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input
+				id="name"
+				type="text"
+				class="form-control"
+                placeholder="Enter Name"
+				[(ngModel)]="name" />
+		</div>
+		<div>
+			<label for="description">Description:</label>
+			<input
+				id="description"
+				type="text"
+				class="form-control"
+                placeholder="Enter Description"
+				[(ngModel)]="description" />
+		</div>
+		<div>
+			<label for="origin">Origin:</label>
+			<input
+				id="origin"
+				type="text"
+				class="form-control"
+                placeholder="Enter Origin"
+				[(ngModel)]="origin" />
+		</div>
+        <br>
+		<div>
+			<button
+				class="btn btn-primary"
+				(click)="addLanguage()">
+				Add Language
+			</button>
+		</div>
+        <br>
+        <br>
+        <h3>Language Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Origin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let language of languages">
+                    <td>{{ language.id }}</td>
+                    <td>{{ language.name }}</td>
+                    <td>{{ language.description }}</td>
+                    <td>{{ language.origin }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
