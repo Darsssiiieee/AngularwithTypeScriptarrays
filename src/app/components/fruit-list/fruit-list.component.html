@@ -1,1 +1,71 @@
-<p>fruit-list works!</p>
+<main>
+	<h2>Fruit List</h2>
+	<div>
+		<label for="id">ID:</label>
+		<input
+			type="text"
+			id="id"
+			[(ngModel)]="id"
+            placeholder="Enter ID"
+			name="id"
+			required />
+	</div>
+
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			[(ngModel)]="name"
+            placeholder="Enter Name"
+			name="name"
+			required />
+	</div>
+	<div>
+		<label for="color">Quantity:</label>
+		<input
+			type="text"
+			id="color"
+			[(ngModel)]="quantity"
+			name="color"
+			required />
+	</div>
+	<div>
+		<label for="weight">Price:</label>
+		<input
+			type="number"
+			id="weight"
+			[(ngModel)]="price"
+			name="weight"
+			required />
+	</div>
+    <br>
+	<div>
+		<button
+			class="btn btn-primary"
+			(click)="addFruit()">
+			Add Fruit
+		</button>
+	</div>
+    <br>
+    <br>
+	<h3>Fruit Information List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Quantity</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let fruit of fruits">
+				<td>{{ fruit.id }}</td>
+				<td>{{ fruit.name }}</td>
+				<td>{{ fruit.quantity }}</td>
+				<td>{{ fruit.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
