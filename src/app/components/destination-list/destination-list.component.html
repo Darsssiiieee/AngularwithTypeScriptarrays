@@ -1,1 +1,70 @@
-<p>destination-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Destination List</h1>
+			</div>
+		</div>
+
+		<div>
+			<label for="id">ID:</label>
+			<input
+				type="text"
+				id="id"
+				name="id"
+				[(ngModel)]="id" />
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input
+				type="text"
+				id="name"
+				name="name"
+                placeholder="Enter Destination Name"
+				[(ngModel)]="name" />
+		</div>
+		<div>
+			<label for="description">Description:</label>
+			<input
+				type="text"
+				id="description"
+				name="description"
+                placeholder="Enter Description"
+				[(ngModel)]="description" />
+		</div>
+		<div>
+			<label for="location">Location:</label>
+			<input
+				type="text"
+				id="location"
+				name="location"
+                placeholder="Enter Location"
+				[(ngModel)]="location" />
+		</div>
+        <br>
+		<div>
+			<button (click)="addDestination()">Add Destination</button>
+		</div>
+        <br>
+        <br>
+        <h3>Destination Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let destination of destinations">
+                    <td>{{ destination.id }}</td>
+                    <td>{{ destination.name }}</td>
+                    <td>{{ destination.description }}</td>
+                    <td>{{ destination.location }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
