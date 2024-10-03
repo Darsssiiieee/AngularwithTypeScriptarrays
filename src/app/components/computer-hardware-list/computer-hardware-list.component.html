@@ -1,1 +1,62 @@
-<p>computer-hardware-list works!</p>
+<main>
+	<h1>Computer Hardware List</h1>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+            placeholder="Enter the Name"
+			[(ngModel)]="name" />
+	</div>
+
+	<div>
+		<label for="location">Location:</label>
+		<input
+			type="text"
+			id="location"
+            placeholder="Enter Location"
+			[(ngModel)]="location" />
+	</div>
+
+	<div>
+		<label for="type">Type:</label>
+		<input
+			type="text"
+			id="type"
+            placeholder="Enter Type"
+			[(ngModel)]="type" />
+	</div>
+
+	<div>
+		<label for="price">Price</label>
+		<input
+			type="number"
+			id="price"
+			[(ngModel)]="price" />
+	</div>
+    <br>
+	<div>
+		<button (click)="addComputerHardware()">Add Computer Hardware</button>
+	</div>
+    <br>
+    <br>
+    <h3>Accessory Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Type</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let hardware of computerHardware">
+				<td>{{ hardware.name }}</td>
+				<td>{{ hardware.location }}</td>
+				<td>{{ hardware.type }}</td>
+				<td>{{ hardware.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
