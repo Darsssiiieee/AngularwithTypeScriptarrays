@@ -1,1 +1,69 @@
-<p>city-list works!</p>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">City List</h1>
+            </div>
+        </div>
+        <div>
+            <label for=""></label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder="City ID"
+                [(ngModel)]="id" />
+        </div>
+        <div>
+            <label for=""></label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder="City Name"
+                [(ngModel)]="name" />
+        </div>
+        <div>
+            <label for=""></label>
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Country"
+                [(ngModel)]="country" />
+        </div>
+        <div>
+            <label for=""></label>
+            <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="population" />
+        </div>
+        <br>
+        <div>      
+            <button
+                class="btn btn-primary"
+                (click)="addCity()">
+                Add City
+            </button>
+        </div>
+        <br>
+        <br>
+        <h3>City Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>City ID</th>
+                    <th>City Name</th>
+                    <th>Country</th>
+                    <th>Population</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let city of cities">
+                    <td>{{ city.id }}</td>
+                    <td>{{ city.name }}</td>
+                    <td>{{ city.country }}</td>
+                    <td>{{ city.population }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
