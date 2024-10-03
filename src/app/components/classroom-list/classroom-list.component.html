@@ -1,1 +1,71 @@
-<p>classroom-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Classroom List</h1>
+			</div>
+		</div>
+
+		<div>
+			<label for="id">Classroom ID:</label>
+			<input
+				type="text"
+				id="id"
+                placeholder="Enter Classroom ID"
+				[(ngModel)]="id" />
+		</div>
+
+		<div>
+			<label for="name">Section:</label>
+			<input
+				type="text"
+				id="section"
+                placeholder="Enter Section"
+				[(ngModel)]="section" />
+		</div>
+
+		<div>
+			<label for="teacher">Teacher Name:</label>
+			<input
+				type="text"
+				id="teacher"
+                placeholder="Enter Teacher Name"
+				[(ngModel)]="teacher" />
+		</div>
+
+		<div>
+			<label for="studentCount">Student Count:</label>
+			<input
+				type="text"
+				id="studentCount"
+				[(ngModel)]="studentCount" />
+		</div>
+        <br>
+				<button
+					class="btn btn-primary"
+					(click)="addNewClassroom()">
+					Add New Classroom
+				</button>
+        <br>
+        <br>
+        <h3>Classroom Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Teacher</th>
+                    <th>Student Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let classroom of classroomList">
+                    <td>{{ classroom.id }}</td>
+                    <td>{{ classroom.section }}</td>
+                    <td>{{ classroom.teacher }}</td>
+                    <td>{{ classroom.studentCount }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
