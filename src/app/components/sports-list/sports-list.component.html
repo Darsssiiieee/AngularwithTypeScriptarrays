@@ -1,1 +1,54 @@
-<p>sports-list works!</p>
+<main>
+	<h1>Sports List</h1>
+	<div>
+		<label for="id">ID:</label>
+		<input
+			type="text"
+			id="id"
+			[(ngModel)]="id"
+			name="id"
+            placeholder="Enter Sports ID"
+			required />
+	</div>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			[(ngModel)]="name"
+			name="name"
+            placeholder="Enter Sports Name"
+			required />
+	</div>
+	<div>
+		<label for="team">Team:</label>
+		<input
+			type="text"
+			id="team"
+			[(ngModel)]="team"
+			name="team"
+            placeholder="Enter Team"
+			required />
+	</div>
+    <br>
+	<button (click)="addSport()">Add Sport</button>
+    <br>
+    <br>
+	<h3>Sports Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Sports Name</th>
+				<th>Team</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let sport of sports">
+				<td>{{ sport.id }}</td>
+				<td>{{ sport.name }}</td>
+				<td>{{ sport.team }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
