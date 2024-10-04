@@ -1,1 +1,88 @@
-<p>tool-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Tool List</h1>
+			</div>
+		</div>
+		<div>
+			<label for="id">ID:</label>
+			<input
+				id="id"
+				type="number"
+				class="form-control"
+                placeholder="Enter ID"
+				[(ngModel)]="id" />
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input
+				id="name"
+				type="text"
+				class="form-control"
+                placeholder="Enter Tool Name"
+				[(ngModel)]="name" />
+		</div>
+
+		<div>
+			<label for="description">Description:</label>
+			<input
+				id="description"
+				type="text"
+				class="form-control"
+                placeholder="Enter Description"
+				[(ngModel)]="description" />
+		</div>
+
+		<div>
+			<label for="price">Price:</label>
+			<input
+				id="price"
+				type="number"
+				class="form-control"
+                placeholder="Set Price"
+				[(ngModel)]="price" />
+		</div>
+
+		<div>
+			<label for="quantity">Quantity:</label>
+			<input
+				id="quantity"
+				type="number"
+				class="form-control"
+                placeholder="Set Quantity"
+				[(ngModel)]="quantity" />
+		</div>
+<br>
+		<div>
+			<button
+				class="btn btn-primary"
+				(click)="addTool()">
+				Add Tool
+			</button>
+		</div>
+        <br>
+        <br>
+        <h3>Tool Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tool of tools">
+                    <td>{{ tool.id }}</td>
+                    <td>{{ tool.name }}</td>
+                    <td>{{ tool.description }}</td>
+                    <td>{{ tool.price }}</td>
+                    <td>{{ tool.quantity }}</td>
+                </tr>
+            </tbody>
+        </table>                    
+	</div>
+</main>
