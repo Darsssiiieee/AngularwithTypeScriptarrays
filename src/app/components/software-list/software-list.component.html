@@ -1,1 +1,75 @@
-<p>software-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Software List</h1>
+			</div>
+		</div>
+
+		<div>
+			<label for="id">ID:</label>
+			<input
+				id="id"
+				type="number"
+				class="form-control"
+                placeholder="Enter Software ID"
+				[(ngModel)]="id" />
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input
+				id="name"
+				type="text"
+				class="form-control"
+                placeholder="Enter Name"
+				[(ngModel)]="name" />
+		</div>
+		<div>
+			<label for="description">Description:</label>
+			<input
+				id="description"
+				type="text"
+				class="form-control"
+                placeholder="Enter Description"
+				[(ngModel)]="description" />
+		</div>
+		<div>
+			<label for="platform">Platform:</label>
+			<input
+				id="platform"
+				type="text"
+				class="form-control"
+                placeholder="Enter Platform"
+				[(ngModel)]="platform" />
+		</div>
+        <br>
+		<div>
+			<button
+				class="btn btn-primary"
+				(click)="addSoftware()">
+				Add Software
+			</button>
+		</div>
+        <br>
+        <br>
+        <h3>Software Information List</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Platform</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let software of softwareList">
+                    <td>{{ software.id }}</td>
+                    <td>{{ software.name }}</td>
+                    <td>{{ software.description }}</td>
+                    <td>{{ software.platform }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</main>
