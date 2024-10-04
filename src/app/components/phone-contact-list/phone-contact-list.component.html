@@ -1,1 +1,77 @@
-<p>phone-contact-list works!</p>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>Phone Contact List</h1>
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<label for="id">ID:</label>
+				<input
+					id="id"
+					type="number"
+					class="form-control"
+                    placeholder="Enter ID"
+					[(ngModel)]="id" />
+			</div>
+			<div>
+				<label for="name">Name:</label>
+				<input
+					id="name"
+					type="text"
+					class="form-control"
+                    placeholder="Enter Name"
+					[(ngModel)]="name" />
+			</div>
+			<div>
+				<label for="email">Email:</label>
+				<input
+					id="email"
+					type="text"
+					class="form-control"
+                    placeholder="Enter Email"
+					[(ngModel)]="email" />
+			</div>
+			<div>
+				<label for="phone">Phone:</label>
+				<input
+					id="phone"
+					type="text"
+					class="form-control"
+                    placeholder="Enter Phone"
+					[(ngModel)]="phone" />
+			</div>
+            <br>
+			<div>
+				<button
+					class="btn btn-primary"
+					(click)="addPhoneContact()">
+					Add Phone Contact
+				</button>
+			</div>
+            <br>
+            <br>
+            <h3>Phone Contact Information List</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let phoneContact of phoneContactList">
+                        <td>{{ phoneContact.id }}</td>
+                        <td>{{ phoneContact.name }}</td>
+                        <td>{{ phoneContact.email }}</td>
+                        <td>{{ phoneContact.phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
+	</div>
+</main>
