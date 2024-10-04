@@ -1,1 +1,54 @@
-<p>subject-list works!</p>
+<main>
+	<h1>Subject List</h1>
+	<div>
+		<label for="id">ID:</label>
+		<input
+			type="text"
+			id="id"
+			[(ngModel)]="id"
+			name="id"
+            placeholder="Enter ID"
+			required />
+	</div>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			[(ngModel)]="name"
+			name="name"
+            placeholder="Enter Subject Name"
+			required />
+	</div>
+	<div>
+		<label for="teacher">Teacher:</label>
+		<input
+			type="text"
+			id="teacher"
+			[(ngModel)]="teacher"
+			name="teacher"
+            placeholder="Enter Teacher Name"
+			required />
+	</div>
+    <br>
+	<button (click)="addSubject()">Add Subject</button>
+    <br>
+    <br>
+	<h3>Subject Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Subject Name</th>
+				<th>Teacher Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let subject of subjects">
+				<td>{{ subject.id }}</td>
+				<td>{{ subject.name }}</td>
+				<td>{{ subject.teacher }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
