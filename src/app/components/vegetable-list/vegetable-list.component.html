@@ -1,1 +1,54 @@
-<p>vegetable-list works!</p>
+<main>
+	<h1>Vegetables List</h1>
+	<div>
+		<label for="id">ID:</label>
+		<input
+			type="text"
+			id="id"
+			[(ngModel)]="id"
+			name="id"
+            placeholder="Enter ID"
+			required />
+	</div>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			[(ngModel)]="name"
+			name="name"
+            placeholder="Enter Vegetable Name"
+			required />
+	</div>
+	<div>
+		<label for="price">Price:</label>
+		<input
+			type="number"
+			id="price"
+			[(ngModel)]="price"
+			name="price"
+            placeholder="Enter Vegetable Price"
+			required />
+	</div>
+    <br>
+	<button (click)="addVegetable()">Add Vegetable</button>
+    <br>
+    <br>
+	<h3>Vegetables Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Vegetable Name</th>
+				<th>Vegetable Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let vegetable of vegetables">
+				<td>{{ vegetable.id }}</td>
+				<td>{{ vegetable.name }}</td>
+				<td>{{ vegetable.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
