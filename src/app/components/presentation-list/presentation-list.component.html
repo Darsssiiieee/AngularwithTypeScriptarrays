@@ -1,1 +1,62 @@
-<p>presentation-list works!</p>
+<main>
+	<h1>Presentation List</h1>
+	<div>
+		<label for="topic">Topic:</label>
+		<input
+			type="text"
+			id="topic"
+			name="topic"
+            placeholder="Enter Topic Presentation"
+			[(ngModel)]="topic" />
+	</div>
+	<div>
+		<label for="presenter">Presenter:</label>
+		<input
+			type="text"
+			id="presenter"
+			name="presenter"
+            placeholder="Enter Name Presenter"
+			[(ngModel)]="presenter" />
+	</div>
+	<div>
+		<label for="date">Date:</label>
+		<input
+			type="date"
+			id="date"
+			name="date"
+			[(ngModel)]="date" />
+	</div>
+	<div>
+		<label for="time">Time:</label>
+		<input
+			type="time"
+			id="time"
+			name="time"
+			[(ngModel)]="time" />
+	</div>
+    <br>
+	<div>
+		<button (click)="addPresentation()">Add Presentation</button>
+	</div>
+    <br>
+    <br>
+	<h3>Presentation Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>Topic</th>
+				<th>Presenter</th>
+				<th>Date</th>
+				<th>Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let presentation of presentations">
+				<td>{{ presentation.topic }}</td>
+				<td>{{ presentation.presenter }}</td>
+				<td>{{ presentation.date }}</td>
+				<td>{{ presentation.time }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
