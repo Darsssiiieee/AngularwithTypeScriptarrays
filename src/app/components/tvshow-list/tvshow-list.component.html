@@ -1,1 +1,74 @@
-<p>tvshow-list works!</p>
+<main>
+	<div class="container">
+		<h1>TV Show List</h1>
+	</div>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+			name="name"
+            placeholder="Enter TVShow Name"
+			[(ngModel)]="name" />
+	</div>
+	<div>
+		<label for="description">Description:</label>
+		<input
+			type="text"
+			id="description"
+			name="description"
+            placeholder="Enter Description"
+			[(ngModel)]="description" />
+	</div>
+	<div>
+		<label for="url">URL:</label>
+		<input
+			type="text"
+			id="url"
+			name="url"
+            placeholder="Enter URL"
+			[(ngModel)]="url" />
+	</div>
+	<div>
+		<label for="rating">Rating:</label>
+		<input
+			type="number"
+			id="rating"
+			name="rating"
+			[(ngModel)]="rating" />
+	</div>
+	<div>
+		<label for="category">Category:</label>
+		<input
+			type="text"
+			id="category"
+			name="category"
+            placeholder="Enter TVShow Category"
+			[(ngModel)]="category" />
+	</div>
+    <br>
+	<button (click)="addTvShow()">Add TV Show</button>
+    <br>
+    <br>
+	<h3>TV Show Information List</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>TVShow Name</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Rating</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tvShow of tvShowList">
+                <td>{{ tvShow.name }}</td>
+                <td>{{ tvShow.description }}</td>
+                <td>{{ tvShow.url }}</td>
+                <td>{{ tvShow.rating }}</td>
+                <td>{{ tvShow.category }}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
