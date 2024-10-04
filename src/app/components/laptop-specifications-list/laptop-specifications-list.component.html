@@ -1,1 +1,78 @@
-<p>laptop-specifications-list works!</p>
+<main>
+	<h1>Laptop Specification List</h1>
+	<div>
+		<label for="model">Model:</label>
+		<input
+			type="text"
+			id="model"
+            placeholder="Enter Model"
+			[(ngModel)]="model" />
+	</div>
+	<div>
+		<label for="processor">Processor:</label>
+		<input
+			type="text"
+			id="processor"
+            placeholder="Enter Processor"
+			[(ngModel)]="processor" />
+	</div>
+	<div>
+		<label for="ram">RAM:</label>
+		<input
+			type="text"
+			id="ram"
+            placeholder="Enter RAM"
+			[(ngModel)]="ram" />
+	</div>
+	<div>
+		<label for="storage">Storage:</label>
+		<input
+			type="text"
+			id="storage"
+            placeholder="Enter storage"
+			[(ngModel)]="storage" />
+	</div>
+	<div>
+		<label for="display">Display:</label>
+		<input
+			type="text"
+			id="display"
+            placeholder="Enter Display"
+			[(ngModel)]="display" />
+	</div>
+	<div>
+		<label for="graphics">Graphics:</label>
+		<input
+			type="text"
+			id="graphics"
+            placeholder="Enter Graphics"
+			[(ngModel)]="graphics" />
+	</div>
+    <br>
+	<button (click)="addLaptop()">Add Laptop</button>
+    <br>
+    <br>
+	<h3>Laptop Specification Information List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Model</th>
+				<th>Processor</th>
+				<th>RAM</th>
+				<th>Storage</th>
+				<th>Display</th>
+				<th>Graphics</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let laptop of laptops">
+				<td>{{ laptop.model }}</td>
+				<td>{{ laptop.specs.processor }}</td>
+				<td>{{ laptop.specs.ram }}</td>
+				<td>{{ laptop.specs.storage }}</td>
+				<td>{{ laptop.specs.display }}</td>
+				<td>{{ laptop.specs.graphics }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
