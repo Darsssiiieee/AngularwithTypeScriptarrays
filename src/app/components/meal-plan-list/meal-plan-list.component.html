@@ -1,1 +1,80 @@
-<p>meal-plan-list works!</p>
+<main>
+	<h1>Meal Plan List</h1>
+	<div>
+		<label for="name">Name:</label>
+		<input
+			type="text"
+			id="name"
+            placeholder="Enter Name"
+			[(ngModel)]="name" />
+	</div>
+	<div>
+		<label for="breakfast">Breakfast:</label>
+		<input
+			type="text"
+			id="breakfast"
+            placeholder="Enter Breakfast"
+			[(ngModel)]="breakfast" />
+	</div>
+	<div>
+		<label for="lunch">Lunch:</label>
+		<input
+			type="text"
+			id="lunch"
+            placeholder="Enter Lunch"
+			[(ngModel)]="lunch" />
+	</div>
+	<div>
+		<label for="dinner">Dinner:</label>
+		<input
+			type="text"
+			id="dinner"
+            placeholder="Enter Dinner"
+			[(ngModel)]="dinner" />
+	</div>
+	<div>
+		<label for="snack">Snack:</label>
+		<input
+			type="text"
+			id="snack"
+            placeholder="Enter Snack"
+			[(ngModel)]="snack" />
+	</div>
+	<div>
+		<label for="drink">Drink:</label>
+		<input
+			type="text"
+			id="drink"
+            placeholder="Enter Drink"
+			[(ngModel)]="drink" />
+	</div>
+    <br>
+	<div>
+		<button (click)="addMealPlan()">Add Meal Plan</button>
+	</div>
+    <br>
+    <br>
+	<h3>Meal Plan Information List</h3>
+    <table border="1">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Breakfast</th>
+				<th>Lunch</th>
+				<th>Dinner</th>
+				<th>Snack</th>
+				<th>Drink</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let meal of meals">
+				<td>{{ meal.name }}</td>
+				<td>{{ meal.breakfast }}</td>
+				<td>{{ meal.lunch }}</td>
+				<td>{{ meal.dinner }}</td>
+				<td>{{ meal.snack }}</td>
+				<td>{{ meal.drink }}</td>
+			</tr>
+		</tbody>
+	</table>
+</main>
