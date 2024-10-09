@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import AccessoryList from '../interface/accessory-list';
+import { AccessoryListServicesService } from '../angular-services/accessory-list-service/accessory-list-services.service';
 
 @Component({
   selector: 'app-accessory-list',
@@ -7,7 +8,10 @@ import AccessoryList from '../interface/accessory-list';
   styleUrl: './accessory-list.component.css'
 })
 export class AccessoryListComponent {
-  accessoryList: AccessoryList[] = [];
+	accessoryList = [] as AccessoryList[];
+	constructor(private accessoryService: AccessoryListServicesService) {
+		this.accessoryList = this.accessoryService.getAccessories();
+	}
 
 	name: string = '';
 	description: string = '';
@@ -16,14 +20,14 @@ export class AccessoryListComponent {
 	category: string = '';
 
 	addAccessory() {if (this.name,this.description,this.type,this.price,this.category.trim())
-		this.accessoryList.push({
+		this.accessoryService.addAccessory(
       
-			name: this.name,
-			description: this.description,
-			type: this.type,
-			price: this.price,
-			category: this.category,
-		});
+			this.name,
+			this.description,
+			this.type,
+			this.price,
+			this.category,
+		);
 
 		this.name = '';
 		this.description = '';
