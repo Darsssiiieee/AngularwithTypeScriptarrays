@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import ArtistList from '../interface/artist-list';
+import { ArtistListServicesService } from '../angular-services/artist-list-service/artist-list-services.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -7,7 +8,10 @@ import ArtistList from '../interface/artist-list';
   styleUrl: './artist-list.component.css'
 })
 export class ArtistListComponent {
-  artistList: ArtistList[] = [];
+	artistList = [] as ArtistList[];
+	constructor(private artistService: ArtistListServicesService) {
+		this.artistList = this.artistService.getArtists();
+	}
 
 	name: string = '';
 	field: string = '';
@@ -15,12 +19,12 @@ export class ArtistListComponent {
 	country: string = '';
 
 	addArtist() { if (this.name,this.field,this.genre,this.country.trim())
-		this.artistList.push({
-			name: this.name,
-			field: this.field,
-			genre: this.genre,
-			country: this.country,
-		});
+		this.artistService.addArtist(
+			this.name,
+			this.field,
+			this.genre,
+			this.country,
+		);
 		this.name = '';
 		this.field = '';
 		this.genre = '';
