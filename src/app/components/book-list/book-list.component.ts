@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import BookList from '../interface/book-list';
+import { BookListServicesService } from '../angular-services/book-list-service/book-list-services.service';
 
 @Component({
   selector: 'app-book-list',
@@ -7,18 +8,22 @@ import BookList from '../interface/book-list';
   styleUrl: './book-list.component.css'
 })
 export class BookListComponent {
-  books: BookList[] = [];
+	books = [] as BookList[];
+	constructor(private bookService: BookListServicesService) {
+		this.books = this.bookService.getBooks();
+	}
+
 
 	id: string = '';
 	name: string = '';
 	isbn: string = '';
 
 	addBook(): void {if (this.name,this.id,this.isbn.trim())
-		this.books.push({
-			id: this.id,
-			name: this.name,
-			isbn: this.isbn,
-		});
+		this.bookService.addBook(
+			this.id, 
+			this.name, 
+			this.isbn
+		);
 
 		this.id = '';
 		this.name = '';
