@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import FoodMenuList from '../interface/food-menu-list';
+import { FoodMenuListServicesService } from '../angular-services/food-menu-list-service/food-menu-list-services.service';
 
 @Component({
   selector: 'app-food-menu-list',
@@ -7,7 +8,10 @@ import FoodMenuList from '../interface/food-menu-list';
   styleUrl: './food-menu-list.component.css'
 })
 export class FoodMenuListComponent {
-  foodMenuList: FoodMenuList[] = [];
+	foodMenuList = [] as FoodMenuList[];
+	constructor(private foodMenuService: FoodMenuListServicesService) {
+		this.foodMenuList = this.foodMenuService.getFoodMenus();
+	}
 
 	id: number = 0;
 	name: string = '';
@@ -16,13 +20,13 @@ export class FoodMenuListComponent {
 	rating: number = 0;
 
 	addFoodMenu() {if (this.name,this.id,this.price,this.rating,this.description.trim())
-		this.foodMenuList.push({
-			id: this.id,
-			name: this.name,
-			price: this.price,
-			description: this.description,
-			rating: this.rating,
-		});
+		this.foodMenuService.addFoodMenu(
+			this.id,
+			this.name,
+			this.price,
+			this.description,
+			this.rating,
+		);
 		this.id = 0;
 		this.name = '';
 		this.price = 0;
