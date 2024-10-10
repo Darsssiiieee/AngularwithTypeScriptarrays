@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import StudentList from '../interface/student-list';
+import { StudentListServicesService } from '../angular-services/student-list-service/student-list-services.service';
 
 @Component({
   selector: 'app-student-list',
@@ -7,7 +8,10 @@ import StudentList from '../interface/student-list';
   styleUrl: './student-list.component.css'
 })
 export class StudentListComponent {
-  students: StudentList[] = [];
+	students = [] as StudentList[];
+	constructor(private studentListService: StudentListServicesService) {
+		this.students = this.studentListService.getStudents();
+	}
 
 	id: string = '';
 	name: string = '';
@@ -15,12 +19,12 @@ export class StudentListComponent {
 	age: number = 0;
 
 	addStudent(): void { if (this.id,this.age,this.grade,this.name.trim())
-		this.students.push({
-			id: this.id,
-			name: this.name,
-			grade: this.grade,
-			age: this.age,
-		});
+		this.studentListService.addStudent(
+			this.id,
+			this.name,
+			this.grade,
+			this.age,
+		);
 
 		this.age = 0;
 		this.grade = '';
