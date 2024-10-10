@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import LibraryList from '../interface/library-list';
+import { LibraryListServicesService } from '../angular-services/library-list-service/library-list-services.service';
 
 @Component({
   selector: 'app-library-list',
@@ -7,7 +8,10 @@ import LibraryList from '../interface/library-list';
   styleUrl: './library-list.component.css'
 })
 export class LibraryListComponent {
-  libraries: LibraryList[] = [];
+	libraries = [] as LibraryList[];
+	constructor(private libraryService: LibraryListServicesService) {
+		this.libraries = this.libraryService.getLibraries();
+	}
 
 	libraryName: string = '';
 	programmingLanguage: string = '';
@@ -17,14 +21,14 @@ export class LibraryListComponent {
 	latestRelease: string = '';
 
 	addLibrary() { if (this.libraryName,this.programmingLanguage,this.description,this.developedBy,this.firstRelease,this.latestRelease.trim())
-		this.libraries.push({
-			libraryName: this.libraryName,
-			programmingLanguage: this.programmingLanguage,
-			description: this.description,
-			developedBy: this.developedBy,
-			firstRelease: this.firstRelease,
-			latestRelease: this.latestRelease,
-		});
+		this.libraryService.addLibrary(
+			this.libraryName,
+			this.programmingLanguage,
+			this.description,
+			this.developedBy,
+			this.firstRelease,
+			this.latestRelease,
+		);
 
 		this.libraryName = '';
 		this.programmingLanguage = '';
