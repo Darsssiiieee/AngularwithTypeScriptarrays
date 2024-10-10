@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import MovieList from '../interface/movie-list';
+import { MovieListServicesService } from '../angular-services/movie-list-service/movie-list-services.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,8 +8,10 @@ import MovieList from '../interface/movie-list';
   styleUrl: './movie-list.component.css'
 })
 export class MovieListComponent {
-  movies: MovieList[] = [];
-
+	movies = [] as MovieList[];
+	constructor(private movieService: MovieListServicesService) {
+		this.movies = this.movieService.getMovies();
+	}
 	id: string = '';
 	name: string = '';
 	director: string = '';
@@ -16,13 +19,13 @@ export class MovieListComponent {
 	rating: number = 0;
 
 	addMovie(): void { if (this.name,this.rating,this.director,this.year,this.id.trim())
-		this.movies.push({
-			id: this.id,
-			name: this.name,
-			director: this.director,
-			year: this.year,
-			rating: this.rating,
-		});
+		this.movieService.addMovie(
+			this.id,
+			this.name,
+			this.director,
+			this.year,
+			this.rating,
+		);
 
 		this.id = '';
 		this.name = '';
