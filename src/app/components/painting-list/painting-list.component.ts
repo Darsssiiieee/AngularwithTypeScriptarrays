@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import PaintingList from '../interface/painting-list';
+import { PaintingListServicesService } from '../angular-services/painting-list-service/painting-list-services.service';
 
 @Component({
   selector: 'app-painting-list',
@@ -7,20 +8,22 @@ import PaintingList from '../interface/painting-list';
   styleUrl: './painting-list.component.css'
 })
 export class PaintingListComponent {
-  paintingList: PaintingList[] = [];
-
+	paintingList = [] as PaintingList[];
+	constructor(private paintingService: PaintingListServicesService) {
+		this.paintingList = this.paintingService.getPaintings();
+	}
 	title: string = '';
 	artist: string = '';
 	year: number = 0;
 	price: number = 0;
 
 	addPainting() { if (this.year,this.price,this.title,this.artist.trim())
-		this.paintingList.push({
-			title: this.title,
-			artist: this.artist,
-			year: this.year,
-			price: this.price,
-		});
+		this.paintingService.addPainting(
+			this.title,
+			this.artist,
+			this.year,
+			this.price,
+		);
 		this.title = '';
 		this.artist = '';
 		this.year = 0;
