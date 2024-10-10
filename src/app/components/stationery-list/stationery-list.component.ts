@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import StationeryList from '../interface/stationery-list';
+import { StationeryListServicesService } from '../angular-services/stationery-list-service/stationery-list-services.service';
 
 @Component({
   selector: 'app-stationery-list',
@@ -7,7 +8,10 @@ import StationeryList from '../interface/stationery-list';
   styleUrl: './stationery-list.component.css'
 })
 export class StationeryListComponent {
-  stationeryList: StationeryList[] = [];
+	stationeryList = [] as StationeryList[];
+	constructor(private stationeryListService: StationeryListServicesService) {
+		this.stationeryList = this.stationeryListService.getStationeries();
+	}
 
 	id: number = 0;
 	name: string = '';
@@ -15,12 +19,12 @@ export class StationeryListComponent {
 	price: number = 0;
 
 	addNewStationery() {if (this.id,this.quantity,this.price,this.name.trim())
-		this.stationeryList.push({
-			id: this.id,
-			name: this.name,
-			quantity: this.quantity,
-			price: this.price,
-		});
+		this.stationeryListService.addStationery(
+			this.id,
+			this.name,
+			this.quantity,
+			this.price,
+		);
 		this.id = 0;
 		this.name = '';
 		this.quantity = 0;
