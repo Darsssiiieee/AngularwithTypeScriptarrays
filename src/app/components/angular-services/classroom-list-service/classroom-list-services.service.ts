@@ -11,17 +11,16 @@ export class ClassroomListServicesService {
   
 	addClassroom(
     id: number, 
-    name: string, 
+    section: string,
     teacher: string, 
     studentCount: number, 
-    section: string,
+    
 	): void {
 		this.classrooms.push({
       id: id,
-      name: name,
+      section: section,
       teacher: teacher,
       studentCount: studentCount,
-      section: ''
     });
 	}
 	getClassrooms(): ClassroomList[] {

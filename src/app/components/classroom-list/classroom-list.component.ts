@@ -16,20 +16,17 @@ export class ClassroomListComponent {
 	section: string = '';
 	teacher: string = '';
 	studentCount: number = 0;
-	name: string = '';
 
-	addNewClassroom() { if (this.name,this.section,this.id,this.studentCount,this.teacher.trim())
+	addNewClassroom() { if (this.section,this.id,this.studentCount,this.teacher.trim())
 		this.classroomService.addClassroom(
 			this.id,
-			this.name,
 			this.teacher,
-			this.studentCount,
 			this.section,
+			this.studentCount,
 		);
 		this.id = 0;
 		this.section= '';
 		this.teacher = '';
 		this.studentCount = 0;
-		this.name = '';
 	}
 }
