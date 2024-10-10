@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import LaptopSpecs from '../interface/laptop-specs-list';
+import { LaptopSpecsListServicesService } from '../angular-services/laptop-specifications-list-service/laptop-specs-list-services.service';
 
 @Component({
   selector: 'app-laptop-specifications-list',
@@ -7,7 +8,11 @@ import LaptopSpecs from '../interface/laptop-specs-list';
   styleUrl: './laptop-specifications-list.component.css'
 })
 export class LaptopSpecificationsListComponent {
-  laptops: LaptopSpecs[] = [];
+	laptops = [] as LaptopSpecs[];
+
+	constructor(private laptopService: LaptopSpecsListServicesService) {
+		this.laptops = this.laptopService.getLaptopSpecs();
+	}
 
 	model: string = '';
 	processor: string = '';
