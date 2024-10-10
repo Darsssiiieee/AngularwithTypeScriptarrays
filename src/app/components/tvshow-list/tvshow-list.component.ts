@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import TvShowList from '../interface/tv-show-list';
+import { TvShowListServicesService } from '../angular-services/tvshow-list-service/tv-show-list-services.service';
 
 @Component({
   selector: 'app-tvshow-list',
@@ -7,7 +8,10 @@ import TvShowList from '../interface/tv-show-list';
   styleUrl: './tvshow-list.component.css'
 })
 export class TVShowListComponent {
-  tvShowList: TvShowList[] = [];
+	tvShowList = [] as TvShowList[];
+	constructor(private tvShowService: TvShowListServicesService) {
+		this.tvShowList = this.tvShowService.getTvShows();
+	}
 
 	name: string = '';
 	description: string = '';
@@ -16,13 +20,13 @@ export class TVShowListComponent {
 	category: string = '';
 
 	addTvShow() {if (this.name,this.description,this.url,this.rating,this.category.trim())
-		this.tvShowList.push({
-			name: this.name,
-			description: this.description,
-			url: this.url,
-			rating: this.rating,
-			category: this.category,
-		});
+		this.tvShowService.addTvShow(
+			this.name,
+			this.description,
+			this.url,
+			this.rating,
+			this.category,
+		);
 		this.name = '';
 		this.description = '';
 		this.url = '';
