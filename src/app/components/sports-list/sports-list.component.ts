@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Sports from '../interface/sports-list';
+import { SportsListServicesService } from '../angular-services/sports-list-service/sports-list-services.service';
 
 @Component({
   selector: 'app-sports-list',
@@ -7,20 +8,18 @@ import Sports from '../interface/sports-list';
   styleUrl: './sports-list.component.css'
 })
 export class SportsListComponent {
-  sports: Sports[] = [];
-
-	id: string = '';
+	sports = [] as Sports[];
+	constructor(private sportsService: SportsListServicesService) {
+		this.sports = this.sportsService.getSports();
+	}
+	id: number = 0;
 	name: string = '';
 	team: string = '';
 
-	addSport(): void { if (this.name,this.team,this.id.trim())
-		this.sports.push({
-			id: Number(this.id),
-			name: this.name,
-			team: this.team,
-		});
+	addSport(): void { if (this.name,this.id,this.team.trim())
+		this.sportsService.addSport(this.id, this.name, this.team);
 
-		this.id = '';
+		this.id = 0;
 		this.name = '';
 		this.team = '';
 	}
