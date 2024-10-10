@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import FrameworkList from '../interface/framework-list';
+import { FrameworkListServicesService } from '../angular-services/framework-list-service/framework-list-services.service';
 
 @Component({
   selector: 'app-framework-list',
@@ -7,7 +8,11 @@ import FrameworkList from '../interface/framework-list';
   styleUrl: './framework-list.component.css'
 })
 export class FrameworkListComponent {
-  frameworks: FrameworkList[] = [];
+	frameworks = [] as FrameworkList[];
+	constructor(private frameworkService: FrameworkListServicesService) {
+		this.frameworks = this.frameworkService.getFrameworks();
+	}
+
 
 	name: string = '';
 	description: string = '';
@@ -16,13 +21,13 @@ export class FrameworkListComponent {
 	latestRelease: string = '';
 
 	addFramework() { if (this.name,this.description,this.developedBy,this.firstRelease,this.latestRelease.trim())
-		this.frameworks.push({
-			name: this.name,
-			description: this.description,
-			developedBy: this.developedBy,
-			firstRelease: this.firstRelease,
-			latestRelease: this.latestRelease,
-		});
+		this.frameworkService.addFramework(
+			this.name,
+			this.description,
+			this.developedBy,
+			this.firstRelease,
+			this.latestRelease,
+		);
 
 		this.name = '';
 		this.description = '';
