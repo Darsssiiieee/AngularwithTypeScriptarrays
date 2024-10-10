@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Vegetables from '../interface/vegetables-list';
+import { VegetablesListServicesService } from '../angular-services/vegetable-list-service/vegetables-list-services.service';
 
 @Component({
   selector: 'app-vegetable-list',
@@ -7,21 +8,20 @@ import Vegetables from '../interface/vegetables-list';
   styleUrl: './vegetable-list.component.css'
 })
 export class VegetableListComponent {
-  vegetables: Vegetables[] = [];
+	vegetables = [] as Vegetables[];
+	constructor(private vegetableListService: VegetablesListServicesService) {
+		this.vegetables = this.vegetableListService.getVegetables();
+	}
 
-	id: string = '';
+	id: number = 0;
 	name: string = '';
-	price: string = '';
+	price: number = 0;
 
 	addVegetable(): void { if (this.price,this.id,this.name.trim())
-		this.vegetables.push({
-			id: Number(this.id),
-			name: this.name,
-			price: Number(this.price),
-		});
+		this.vegetableListService.addVegetable(this.id, this.name, this.price);
 
-		this.id = '';
+		this.id = 0;
 		this.name = '';
-		this.price = '';
+		this.price = 0;
 	}
 }
