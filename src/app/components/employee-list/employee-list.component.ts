@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeList } from '../interface/employee-list';
+import { EmployeeListServicesService } from '../angular-services/employee-list-service/employee-list-services.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -7,7 +8,10 @@ import { EmployeeList } from '../interface/employee-list';
   styleUrl: './employee-list.component.css'
 })
 export class EmployeeListComponent {
-  employees: EmployeeList[] = [];
+	employees = [] as EmployeeList[];
+	constructor(private employeeListService: EmployeeListServicesService) {
+		this.employees = this.employeeListService.getEmployees();
+	}
 
 	id: string = '';
 	name: string = '';
@@ -15,12 +19,12 @@ export class EmployeeListComponent {
 	age: number = 0;
 
 	addEmployee(): void { if (this.name,this.id,this.age,this.position.trim())
-		this.employees.push({
-			id: this.id,
-			name: this.name,
-			position: this.position,
-			age: this.age,
-		});
+		this.employeeListService.addEmployee(
+			this.id,
+			this.name,
+			this.position,
+			this.age,
+		);
 
 		this.age = 0;
 		this.position = '';
