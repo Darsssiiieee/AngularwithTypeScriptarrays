@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import MusicPlayList from '../interface/music-play-list';
+import { MusicPlayListServicesService } from '../angular-services/music-play-list-service/music-play-list-services.service';
 
 @Component({
   selector: 'app-music-play-list',
@@ -7,33 +8,35 @@ import MusicPlayList from '../interface/music-play-list';
   styleUrl: './music-play-list.component.css'
 })
 export class MusicPlayListComponent {
-  musicPlayList: MusicPlayList[] = [];
-
-	id: string = '';
+	musicPlayList = [] as MusicPlayList[];
+	constructor(private musicPlayListService: MusicPlayListServicesService) {
+		this.musicPlayList = this.musicPlayListService.getMusicPlayList();
+	}
+	id: number = 0;
 	name: string = '';
 	artist: string = '';
 	album: string = '';
-	duration: string = '';
+	duration: number = 0;
 	genre: string = '';
-	year: string = '';
+	year: number = 0;
 
 	addMusicPlayList(): void { if (this.name,this.id,this.year,this.duration,this.genre,this.album,this.artist.trim())
-		this.musicPlayList.push({
-			id: Number(this.id),
-			name: this.name,
-			artist: this.artist,
-			album: this.album,
-			duration: this.duration,
-			genre: this.genre,
-			year: this.year,
-		});
+		this.musicPlayListService.addMusicPlayList(
+			this.id,
+			this.name,
+			this.artist,
+			this.album,
+			this.duration,
+			this.genre,
+			this.year,
+		);
 
-		this.id = '';
+		this.id = 0;
 		this.name = '';
 		this.artist = '';
 		this.album = '';
-		this.duration = '';
+		this.duration = 0;
 		this.genre = '';
-		this.year = '';
+		this.year = 0;
 	}
 }
