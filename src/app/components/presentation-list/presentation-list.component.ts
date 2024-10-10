@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import PresentationList from '../interface/presentation-list';
+import { PresentationListServicesService } from '../angular-services/presentation-list-service/presentation-list-services.service';
 
 @Component({
   selector: 'app-presentation-list',
@@ -7,7 +8,10 @@ import PresentationList from '../interface/presentation-list';
   styleUrl: './presentation-list.component.css'
 })
 export class PresentationListComponent {
-  presentations: PresentationList[] = [];
+	presentations = [] as PresentationList[];
+	constructor(private presentationService: PresentationListServicesService) {
+		this.presentations = this.presentationService.getPresentations();
+	}
 
 	topic: string = '';
 	presenter: string = '';
@@ -15,12 +19,12 @@ export class PresentationListComponent {
 	time: string = '';
 
 	addPresentation() { if (this.topic,this.time,this.date,this.presenter.trim())
-		this.presentations.push({
-			topic: this.topic,
-			presenter: this.presenter,
-			date: this.date,
-			time: this.time,
-		});
+		this.presentationService.addPresentation(
+			this.topic,
+			this.presenter,
+			this.date,
+			this.time,
+		);
 
 		this.topic = '';
 		this.presenter = '';
