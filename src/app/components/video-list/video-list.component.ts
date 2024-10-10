@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import VideoList from '../interface/video-list';
+import { VideoListServicesService } from '../angular-services/video-list-service/video-list-services.service';
 
 @Component({
   selector: 'app-video-list',
@@ -7,8 +8,10 @@ import VideoList from '../interface/video-list';
   styleUrl: './video-list.component.css'
 })
 export class VideoListComponent {
-  videoList: VideoList[] = [];
-
+	videoList = [] as VideoList[];
+	constructor(private videoService: VideoListServicesService) {
+		this.videoList = this.videoService.getVideos();
+	}
 	name: string = '';
 	description: string = '';
 	url: string = '';
@@ -16,13 +19,13 @@ export class VideoListComponent {
 	category: string = '';
 
 	addVideo() { if (this.name,this.description,this.url,this.rating,this.category.trim())
-		this.videoList.push({
-			name: this.name,
-			description: this.description,
-			url: this.url,
-			rating: this.rating,
-			category: this.category,
-		});
+		this.videoService.addVideo(
+			this.name,
+			this.description,
+			this.url,
+			this.rating,
+			this.category,
+		);
 		this.name = '';
 		this.description = '';
 		this.url = '';
