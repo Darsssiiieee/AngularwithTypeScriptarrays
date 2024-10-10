@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import LectureList from '../interface/lecture-list';
+import { LectureListServicesService } from '../angular-services/lecture-list-service/lecture-list-services.service';
 
 @Component({
   selector: 'app-lecture-list',
@@ -7,20 +8,22 @@ import LectureList from '../interface/lecture-list';
   styleUrl: './lecture-list.component.css'
 })
 export class LectureListComponent {
-	lectureList: LectureList[] = [];
-
+	lectureList = [] as LectureList[];
+	constructor(private lectureListService: LectureListServicesService) {
+		this.lectureList = this.lectureListService.getLectures();
+	}
 	id: number = 0;
 	name: string = '';
 	duration: number = 0;
 	instructor: string = '';
 
 	addLecture() { if (this.name,this.id,this.duration,this.instructor.trim())
-		this.lectureList.push({
-			id: this.id,
-			name: this.name,
-			duration: this.duration,
-			instructor: this.instructor,
-		});
+		this.lectureListService.addLecture(
+			this.id,
+			this.name,
+			this.duration,
+			this.instructor,
+		);
 		this.id = 0;
 		this.name = '';
 		this.duration = 0;
