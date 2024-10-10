@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import DeveloperToolsList from '../interface/developer-tools-list';
+import { DeveloperToolsListServicesService } from '../angular-services/developer-tools-list-service/developer-tools-list-services.service';
 
 @Component({
   selector: 'app-developer-tools-list',
@@ -7,7 +8,10 @@ import DeveloperToolsList from '../interface/developer-tools-list';
   styleUrl: './developer-tools-list.component.css'
 })
 export class DeveloperToolsListComponent {
-  developerTools: DeveloperToolsList[] = [];
+	developerTools = [] as DeveloperToolsList[];
+	constructor(private developerToolsService: DeveloperToolsListServicesService) {
+		this.developerTools = this.developerToolsService.getDeveloperTools();
+	}
 
 	toolName: string = '';
 	toolDescription: string = '';
@@ -15,12 +19,12 @@ export class DeveloperToolsListComponent {
 	toolDuration: string = '';
 
 	addDeveloperTool() { if (this.toolName,this.toolDescription,this.toolPrice,this.toolDuration.trim())
-		this.developerTools.push({
-			toolName: this.toolName,
-			toolDescription: this.toolDescription,
-			toolPrice: this.toolPrice,
-			toolDuration: this.toolDuration,
-		});
+		this.developerToolsService.addDeveloperTool(
+			this.toolName,
+			this.toolDescription,
+			this.toolPrice,
+			this.toolDuration,
+		);
 
 		this.toolName = '';
 		this.toolDescription = '';
