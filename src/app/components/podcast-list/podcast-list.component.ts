@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import PodcastList from '../interface/podcast-list';
+import { PodcastListServicesService } from '../angular-services/podcast-list-service/podcast-list-services.service';
 
 @Component({
   selector: 'app-podcast-list',
@@ -7,7 +8,10 @@ import PodcastList from '../interface/podcast-list';
   styleUrl: './podcast-list.component.css'
 })
 export class PodcastListComponent {
-	podcasts: PodcastList[] = [];
+	podcasts = [] as PodcastList[];
+	constructor(private podcastService: PodcastListServicesService) {
+		this.podcasts = this.podcastService.getPodcasts();
+	}
 
 	name: string = '';
 	host: string = '';
@@ -15,12 +19,12 @@ export class PodcastListComponent {
 	episodeNumber: number = 0;
 
 	addPodcast() { if (this.name,this.host,this.episodeNumber,this.genre.trim())
-		this.podcasts.push({
-			name: this.name,
-			host: this.host,
-			genre: this.genre,
-			episodeNumber: this.episodeNumber,
-		});
+		this.podcastService.addPodcast(
+			this.name,
+			this.host,
+			this.genre,
+			this.episodeNumber,
+		);
 
 		this.name = '';
 		this.host = '';
