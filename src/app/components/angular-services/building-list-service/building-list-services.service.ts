@@ -8,6 +8,7 @@ export class BuildingListServicesService {
   private buildings: BuildingList[] = [];
   
 	constructor() {}
+	
 	addBuilding(
 		name: string,
 		floors: number,

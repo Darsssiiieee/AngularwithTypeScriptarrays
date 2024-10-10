@@ -9,7 +9,13 @@ export class AccessoryListServicesService {
 
   constructor() { }
 
-  addAccessory(name: string, description: string, type: string, price: number, category: string): void {
+  addAccessory(
+    name: string, 
+    description: string, 
+    type: string, 
+    price: number, 
+    category: string
+  ): void {
     this.accessories.push({
       name: name,
       description: description,

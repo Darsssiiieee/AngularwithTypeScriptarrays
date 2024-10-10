@@ -8,6 +8,7 @@ export class CityListServicesService {
   private cities: CityList[] = [];
   
 	constructor() {}
+	
 	addCity(
 		id: string,
 		name: string,

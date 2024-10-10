@@ -8,7 +8,12 @@ export class BookListServicesService {
   private books: BookList[] = [];
   
 	constructor() {}
-	addBook(id: string, name: string, isbn: string): void {
+
+	addBook(
+		id: string, 
+		name: string, 
+		isbn: string
+	): void {
 		this.books.push({
 			id: id,
 			name: name,

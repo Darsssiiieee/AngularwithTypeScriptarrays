@@ -6,10 +6,15 @@ import ClassroomList from '../../interface/classroom-list';
 })
 export class ClassroomListServicesService {
   private classrooms: ClassroomList[] = [];
+
 	constructor() {}
   
 	addClassroom(
-id: number, name: string, teacher: string, studentCount: number, section: string,
+    id: number, 
+    name: string, 
+    teacher: string, 
+    studentCount: number, 
+    section: string,
 	): void {
 		this.classrooms.push({
       id: id,

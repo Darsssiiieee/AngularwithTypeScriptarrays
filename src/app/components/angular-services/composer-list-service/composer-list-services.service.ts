@@ -8,6 +8,7 @@ export class ComposerListServicesService {
   private composers: ComposerList[] = [];
   
 	constructor() {}
+	
 	addComposer(
 		name: string,
 		popularMusic: string,

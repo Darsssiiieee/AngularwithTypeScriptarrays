@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Country from '../interface/country-list';
+import { CountryListServicesService } from '../angular-services/country-list-service/country-list-services.service';
 
 @Component({
   selector: 'app-country-list',
@@ -7,24 +8,27 @@ import Country from '../interface/country-list';
   styleUrl: './country-list.component.css'
 })
 export class CountryListComponent {
-  countries: Country[] = [];
+	countries = [] as Country[];
+	constructor(private countryListService: CountryListServicesService) {
+		this.countries = this.countryListService.getCountries();
+	}
 
-	id: string = '';
+	id: number = 0;
 	name: string = '';
 	capital: string = '';
-	population: string = '';
+	population: number = 0;
 
 	addCountry(): void { if (this.name,this.id,this.population,this.capital.trim())
-		this.countries.push({
-			id: Number(this.id),
-			name: this.name,
-			capital: this.capital,
-			population: Number(this.population),
-		});
+		this.countryListService.addCountry(
+			this.id,
+			this.name,
+			this.capital,
+			this.population,
+		);
 
-		this.id = '';
+		this.id = 0;
 		this.name = '';
 		this.capital = '';
-		this.population = '';
+		this.population = 0;
 	}
 }

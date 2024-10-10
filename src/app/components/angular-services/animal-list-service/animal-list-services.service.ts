@@ -6,8 +6,14 @@ import Animals from '../../interface/animals-list';
 })
 export class AnimalListServicesService {
   private animals: Animals[] = [];
+
 	constructor() {}
-	addAnimal(id: number, name: string, origin: string): void {
+
+	addAnimal(
+		id: number, 
+		name: string, 
+		origin: string
+	): void {
 		this.animals.push({
 			id: id,
 			name: name,
