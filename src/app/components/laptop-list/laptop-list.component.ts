@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import LaptopList from '../interface/laptop-list';
+import { LaptopListServicesService } from '../angular-services/laptop-list-service/laptop-list-services.service';
 
 @Component({
   selector: 'app-laptop-list',
@@ -7,7 +8,11 @@ import LaptopList from '../interface/laptop-list';
   styleUrl: './laptop-list.component.css'
 })
 export class LaptopListComponent {
-  laptops: LaptopList[] = [];
+	laptops = [] as LaptopList[];
+
+	constructor(private laptopService: LaptopListServicesService) {
+		this.laptops = this.laptopService.getLaptops();
+	}
 
 	id: number = 0;
 	model: string = '';
@@ -20,17 +25,17 @@ export class LaptopListComponent {
 	graphics: string = '';
 
 	addLaptop() { if (this.id,this.model,this.brand,this.price,this.processor,this.ram,this.storage,this.display,this.graphics.trim())
-		this.laptops.push({
-			id: this.id,
-			model: this.model,
-			brand: this.brand,
-			price: this.price,
-			processor: this.processor,
-			ram: this.ram,
-			storage: this.storage,
-			display: this.display,
-			graphics: this.graphics,
-		});
+		this.laptopService.addLaptop(
+			this.id,
+			this.model,
+			this.brand,
+			this.price,
+			this.processor,
+			this.ram,
+			this.storage,
+			this.display,
+			this.graphics,
+		);
 		this.id = 0;
 		this.model = '';
 		this.brand = '';
