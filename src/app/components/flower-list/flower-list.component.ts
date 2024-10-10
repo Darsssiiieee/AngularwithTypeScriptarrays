@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import FlowerList from '../interface/flower-list';
+import { FlowerListServicesService } from '../angular-services/flower-list-service/flower-list-services.service';
 
 @Component({
   selector: 'app-flower-list',
@@ -7,8 +8,10 @@ import FlowerList from '../interface/flower-list';
   styleUrl: './flower-list.component.css'
 })
 export class FlowerListComponent {
-	flowerList: FlowerList[] = [];
-
+	flowerList = [] as FlowerList[];
+	constructor(private flowerListService: FlowerListServicesService) {
+		this.flowerList = this.flowerListService.getFlowers();
+	}
 	id: number = 0;
 	name: string = '';
 	description: string = '';
@@ -17,14 +20,14 @@ export class FlowerListComponent {
 	quantity: number = 0;
 
 	addFlower() {if (this.name,this.id,this.price,this.quantity,this.isAvailable,this.description.trim())
-		this.flowerList.push({
-			id: this.id,
-			name: this.name,
-			description: this.description,
-			price: this.price,
-			isAvailable: Boolean(this.isAvailable),
-			quantity: this.quantity,
-		});
+		this.flowerListService.addFlower(
+			this.id,
+			this.name,
+			this.price,
+			this.quantity,
+			this.description,
+			this.isAvailable,
+		);
 
 		this.id = 0;
 		this.name = '';
