@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import FurnitureList from '../interface/furniture-list';
+import { FurnitureListServicesService } from '../angular-services/furniture-list-service/furniture-list-services.service';
 
 @Component({
   selector: 'app-furniture-list',
@@ -7,7 +8,10 @@ import FurnitureList from '../interface/furniture-list';
   styleUrl: './furniture-list.component.css'
 })
 export class FurnitureListComponent {
-  furnitureList: FurnitureList[] = [];
+	furnitureList = [] as FurnitureList[];
+	constructor(private furnitureService: FurnitureListServicesService) {
+		this.furnitureList = this.furnitureService.getFurnitures();
+	}
 
 	name: string = '';
 	description: string = '';
@@ -16,13 +20,13 @@ export class FurnitureListComponent {
 	category: string = '';
 
 	addFurniture() { if (this.name,this.price,this.type,this.category,this.description.trim())
-		this.furnitureList.push({
-			name: this.name,
-			description: this.description,
-			type: this.type,
-			price: this.price,
-			category: this.category,
-		});
+		this.furnitureService.addFurniture(
+			this.name,
+			this.description,
+			this.type,
+			this.price,
+			this.category,
+		);
 		this.name = '';
 		this.description = '';
 		this.type = '';
