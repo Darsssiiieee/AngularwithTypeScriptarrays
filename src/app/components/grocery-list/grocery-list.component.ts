@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import GroceryList from '../interface/grocery-list';
+import { GroceryListServicesService } from '../angular-services/grocery-list-service/grocery-list-services.service';
 
 @Component({
   selector: 'app-grocery-list',
@@ -7,7 +8,10 @@ import GroceryList from '../interface/grocery-list';
   styleUrl: './grocery-list.component.css'
 })
 export class GroceryListComponent {
-  groceryList: GroceryList[] = [];
+	groceryList = [] as GroceryList[];
+	constructor(private groceryService: GroceryListServicesService) {
+		this.groceryList = this.groceryService.getGroceries();
+	}
 
 	id: number = 0;
 	name: string = '';
@@ -15,12 +19,12 @@ export class GroceryListComponent {
 	description: string = '';
 
 	addGrocery() {if (this.name,this.id,this.price,this.description.trim())
-		this.groceryList.push({
-			id: this.id,
-			name: this.name,
-			price: this.price,
-			description: this.description,
-		});
+		this.groceryService.addGrocery(
+			this.id,
+			this.name,
+			this.price,
+			this.description,
+		);
 		this.id = 0;
 		this.name = '';
 		this.price = 0;
