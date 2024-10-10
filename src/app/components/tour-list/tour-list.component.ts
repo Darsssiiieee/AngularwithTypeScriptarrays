@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import TourList from '../interface/tour-list';
+import { TourListServicesService } from '../angular-services/tour-list-service/tour-list-services.service';
 
 @Component({
   selector: 'app-tour-list',
@@ -7,7 +8,10 @@ import TourList from '../interface/tour-list';
   styleUrl: './tour-list.component.css'
 })
 export class TourListComponent {
-	tours: TourList[] = [];
+	tours = [] as TourList[];
+	constructor(private tourService: TourListServicesService) {
+		this.tours = this.tourService.getTours();
+	}
 
 	tourDate: string = '';
 	tourName: string = '';
@@ -16,13 +20,13 @@ export class TourListComponent {
 	tourDuration: string = '';
 
 	addTour() { if (this.tourName,this.tourDate,this.tourPrice,this.tourDuration,this.tourLocation.trim())
-		this.tours.push({
-			tourDate: this.tourDate,
-			tourName: this.tourName,
-			tourLocation: this.tourLocation,
-			tourPrice: this.tourPrice,
-			tourDuration: this.tourDuration,
-		});
+		this.tourService.addTour(
+			this.tourDate,
+			this.tourName,
+			this.tourLocation,
+			this.tourPrice,
+			this.tourDuration,
+		);
 
 		this.tourDate = '';
 		this.tourName = '';
